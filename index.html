@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Do Da Daisy — Crafting Joy</title>
+<meta name="description" content="Handmade crafts, paint kits, and cozy goods from Do Da Daisy.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --cream: #F7F0EA;
+    --cream-deep: #F2E8DF;
+    --charcoal: #4C4539;
+    --terracotta: #A56B4A;
+    --sage: #74774D;
+    --sage-soft: #9CA37E;
+    --pink: #E5ABAC;
+    --pink-pale: #F3D6D2;
+    --tan: #BEA490;
+    --gray-thread: #ACACAC;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    color: var(--charcoal);
+    font-family: 'Quicksand', sans-serif;
+    min-height: 100%;
+  }
+
+  body {
+    background-image:
+      radial-gradient(circle at 15% 8%, rgba(229,171,172,0.18), transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(116,119,77,0.10), transparent 45%);
+  }
+
+  .page {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 40px 22px 60px;
+    position: relative;
+  }
+
+  /* ---------- floating stitch / button doodles ---------- */
+  .doodle {
+    position: absolute;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+  .doodle svg { display: block; }
+
+  /* ---------- header ---------- */
+  .header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  .logo-badge {
+    width: 168px;
+    height: auto;
+    margin: 0 auto 14px;
+    display: block;
+    filter: drop-shadow(0 6px 14px rgba(76,69,57,0.12));
+  }
+
+  .tagline {
+    font-family: 'Caveat', cursive;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--terracotta);
+    margin: 2px 0 6px;
+    line-height: 1;
+  }
+
+  .subtext {
+    font-size: 13.5px;
+    color: var(--charcoal);
+    opacity: 0.65;
+    letter-spacing: 0.03em;
+    margin: 0;
+  }
+
+  .thread-divider {
+    width: 100%;
+    height: 14px;
+    margin: 22px 0 26px;
+  }
+
+  /* ---------- link cards ---------- */
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .link-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    text-decoration: none;
+    color: var(--charcoal);
+    background: #FFFDFB;
+    border: 1.5px solid rgba(76,69,57,0.08);
+    border-radius: 18px;
+    box-shadow: 0 3px 0 rgba(76,69,57,0.06), 0 8px 18px rgba(76,69,57,0.05);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    overflow: hidden;
+  }
+
+  .link-card::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 6px;
+    background: var(--accent, var(--pink));
+    border-radius: 18px 0 0 18px;
+  }
+
+  .link-card:hover,
+  .link-card:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 0 rgba(76,69,57,0.08), 0 14px 24px rgba(76,69,57,0.10);
+    border-color: rgba(76,69,57,0.14);
+    outline: none;
+  }
+
+  .link-card:active {
+    transform: translateY(-1px);
+  }
+
+  .link-icon {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--accent-soft, var(--pink-pale));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .link-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .link-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .link-title {
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0 0 1px;
+    color: var(--charcoal);
+  }
+
+  .link-sub {
+    font-size: 12.5px;
+    color: var(--charcoal);
+    opacity: 0.55;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .link-arrow {
+    flex-shrink: 0;
+    opacity: 0.35;
+    transition: transform 0.18s ease;
+  }
+  .link-card:hover .link-arrow { transform: translateX(3px); opacity: 0.6; }
+
+  /* section labels */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 30px 0 14px;
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--sage);
+  }
+  .section-label:first-of-type { margin-top: 6px; }
+  .section-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(76,69,57,0.25) 0 4px, transparent 4px 8px);
+    background-size: 8px 1px;
+    background-repeat: repeat-x;
+  }
+  .section-label .heart {
+    font-size: 14px;
+  }
+
+  /* affiliate sub-style */
+  .link-card.affiliate {
+    background: var(--cream-deep);
+    border-style: dashed;
+    border-color: rgba(76,69,57,0.18);
+  }
+
+  /* footer */
+  .footer {
+    text-align: center;
+    margin-top: 38px;
+  }
+  .footer p {
+    font-size: 12px;
+    color: var(--charcoal);
+    opacity: 0.5;
+    margin: 4px 0;
+  }
+  .footer .heart-row {
+    margin-bottom: 8px;
+    opacity: 0.5;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .link-card { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- floating doodles -->
+  <div class="doodle" style="top:6px; left:-6px;">
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+      <circle cx="17" cy="17" r="13" stroke="#9CA37E" stroke-width="2"/>
+      <circle cx="12" cy="12" r="1.6" fill="#9CA37E"/>
+      <circle cx="22" cy="12" r="1.6" fill="#9CA37E"/>
+      <circle cx="12" cy="22" r="1.6" fill="#9CA37E"/>
+      <circle cx="22" cy="22" r="1.6" fill="#9CA37E"/>
+    </svg>
+  </div>
+  <div class="doodle" style="top:30px; right:-4px;">
+    <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+      <circle cx="13" cy="13" r="10" stroke="#E5ABAC" stroke-width="2"/>
+      <circle cx="9" cy="9" r="1.4" fill="#E5ABAC"/>
+      <circle cx="17" cy="9" r="1.4" fill="#E5ABAC"/>
+      <circle cx="9" cy="17" r="1.4" fill="#E5ABAC"/>
+      <circle cx="17" cy="17" r="1.4" fill="#E5ABAC"/>
+    </svg>
+  </div>
+
+  <header class="header">
+    <img src="img/logo.png" class="logo-badge" alt="Do Da Daisy logo">
+    <p class="tagline">handmade with a little crafting joy</p>
+    <p class="subtext">PAINT KITS · CUSTOM CRAYONS · COZY FINDS</p>
+  </header>
+
+  <svg class="thread-divider" viewBox="0 0 400 14" preserveAspectRatio="none">
+    <path d="M0,7 Q20,0 40,7 T80,7 T120,7 T160,7 T200,7 T240,7 T280,7 T320,7 T360,7 T400,7"
+          stroke="#E5ABAC" stroke-width="2" fill="none" stroke-dasharray="6,5"/>
+  </svg>
+
+  <!-- MAIN LINKS -->
+  <div class="links">
+
+    <a class="link-card" style="--accent:#A56B4A; --accent-soft:#E4C2B8;" href="https://www.etsy.com/shop/DoDaDaisy" target="_blank" rel="noopener">
+      <div class="link-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 7h14M7 7v12a1 1 0 001 1h8a1 1 0 001-1V7M9 7V5a3 3 0 016 0v2" stroke="#A56B4A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="link-text">
+        <p class="link-title">Shop on Etsy</p>
+        <p class="link-sub">Browse the full DoDaDaisy collection</p>
+      </div>
+      <svg class="link-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M6 4l5 5-5 5" stroke="#4C4539" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <a class="link-card" style="--accent:#E5ABAC; --accent-soft:#F3D6D2;" href="https://instagram.com/do.da.daisy" target="_blank" rel="noopener">
+      <div class="link-icon">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="#C97D80" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="#C97D80" stroke-width="1.8"/><circle cx="17.2" cy="6.8" r="1.1" fill="#C97D80"/></svg>
+      </div>
+      <div class="link-text">
+        <p class="link-title">Follow on Instagram</p>
+        <p class="link-sub">New makes, behind the scenes & restocks</p>
+      </div>
+      <svg class="link-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M6 4l5 5-5 5" stroke="#4C4539" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <a class="link-card" style="--accent:#74774D; --accent-soft:#DCE0C8;" href="*" target="_blank" rel="noopener">
+      <div class="link-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M14 9h2.5V6H14c-1.7 0-3 1.3-3 3v2H9v3h2v6h3v-6h2.3l.7-3H14V9.3c0-.2.1-.3.3-.3H14z" stroke="#74774D" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="link-text">
+        <p class="link-title">Find us on Facebook</p>
+        <p class="link-sub">Updates & community</p>
+      </div>
+      <svg class="link-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M6 4l5 5-5 5" stroke="#4C4539" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+  </div>
+
+  <!-- AFFILIATE SECTION -->
+  <div class="section-label"><span class="heart">♥</span> things i love</div>
+
+  <div class="links">
+
+    <a class="link-card affiliate" style="--accent:#BEA490; --accent-soft:#E8DCCF;" href="#" target="_blank" rel="noopener sponsored">
+      <div class="link-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 7l1.5 11a1.5 1.5 0 001.5 1.3h10a1.5 1.5 0 001.5-1.3L20 7M4 7h16M4 7l1-3h14l1 3M9 11v5M15 11v5" stroke="#9C8568" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="link-text">
+        <p class="link-title">My favorite craft paints</p>
+        <p class="link-sub">affiliate link · amazon</p>
+      </div>
+      <svg class="link-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M6 4l5 5-5 5" stroke="#4C4539" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <a class="link-card affiliate" style="--accent:#BEA490; --accent-soft:#E8DCCF;" href="#" target="_blank" rel="noopener sponsored">
+      <div class="link-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 7l1.5 11a1.5 1.5 0 001.5 1.3h10a1.5 1.5 0 001.5-1.3L20 7M4 7h16M4 7l1-3h14l1 3M9 11v5M15 11v5" stroke="#9C8568" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="link-text">
+        <p class="link-title">Studio storage I use</p>
+        <p class="link-sub">affiliate link · amazon</p>
+      </div>
+      <svg class="link-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M6 4l5 5-5 5" stroke="#4C4539" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+  </div>
+
+  <footer class="footer">
+    <div class="heart-row">✂️ ⋯ 🧵 ⋯ ✂️</div>
+    <p>Do Da Daisy · Ellen Tigner</p>
+    <p>&copy; <span id="year"></span> all rights reserved</p>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
